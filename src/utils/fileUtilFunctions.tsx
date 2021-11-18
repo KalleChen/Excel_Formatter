@@ -13,9 +13,11 @@ export const excelConvertToObject = (
           const workbook: XLSX.WorkBook = XLSX.read(data, { type: 'binary' })
           const first_sheet_name = workbook.SheetNames[0]
           const worksheet = workbook.Sheets[first_sheet_name]
-          const result = XLSX.utils.sheet_to_json(worksheet, {
+          const result = XLSX.utils.sheet_to_json<
+            Record<string, string | number>
+          >(worksheet, {
             raw: true
-          }) as any[]
+          })
           resolve(result)
         }
         reader.readAsBinaryString(file)
@@ -25,4 +27,17 @@ export const excelConvertToObject = (
     }
   )
   return promise
+}
+
+export const getFileObjByColumns = (
+  obj: {
+    [key: string]: string | number
+  }[]
+): { [key: string]: (string | number)[] } => {
+  const columns = Object.keys(obj[0])
+  const result: { [key: string]: (string | number)[] } = {}
+  columns.forEach((column) => {
+    result[column] = obj.map((item) => item[column])
+  })
+  return result
 }
