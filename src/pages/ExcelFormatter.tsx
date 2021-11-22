@@ -14,21 +14,21 @@ const ExcelFormatter: React.FC = () => {
     <Box
       sx={{
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         width: '100vw',
         height: '100vh'
       }}
     >
-      <Box sx={{ p: 5 }}>
-        <OperatorMenu />
+      <Box sx={{ height: '70%', display: 'flex', flexDirection: 'row' }}>
+        <Box sx={{ height: 1 }}>
+          <OperatorMenu />
+        </Box>
+        <Box sx={{ height: 1, flexGrow: 1 }}>
+          {fileData ? <GraphLayout /> : <UploadFile />}
+        </Box>
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-        <Box sx={{ height: '70%', width: 1 }}>
-          {fileData ? <GraphLayout /> : <UploadFile />}{' '}
-        </Box>
-        <Box sx={{ height: '30%', width: 1 }}>
-          <ColumnsMap />
-        </Box>
+      <Box sx={{ flexGrow: 1, width: 1 }}>
+        <ColumnsMap />
       </Box>
     </Box>
   )

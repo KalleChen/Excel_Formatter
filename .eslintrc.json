@@ -38,6 +38,7 @@
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
-    "no-empty-function": "off"
+    "no-empty-function": "off",
+    "no-empty-interface": "off"
   }
 }
