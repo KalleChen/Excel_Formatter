@@ -24,9 +24,10 @@ const styles = {
 } as const
 
 const DragItem: React.FC<Prop> = (props) => {
+  const { name, onDragStart } = props
   return (
-    <Box sx={styles.root} draggable={true}>
-      {props.name}
+    <Box sx={styles.root} onDragStart={onDragStart} draggable={true}>
+      {name}
     </Box>
   )
 }

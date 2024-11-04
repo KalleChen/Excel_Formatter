@@ -42,6 +42,8 @@ const FileContextProvider: React.FC = ({ children }) => {
     }
   }, [file, getFileObject])
 
+  console.log(fileData)
+
   const value = {
     file,
     setFile,
